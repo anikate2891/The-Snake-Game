@@ -1,0 +1,1 @@
+I created a Snake Game using HTML, CSS, and JavaScript. Some features are still under development, such as detecting when the snake collides with its own body and increasing the speed after eating food.
