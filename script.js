@@ -157,17 +157,18 @@ document.addEventListener("touchmove", function(e){
     let diffX = touchEndX - touchStartX;
     let diffY = touchEndY - touchStartY;
 
-    // Horizontal Swipe
+// Horizontal Swipe
     if(Math.abs(diffX) > Math.abs(diffY)){
         if(diffX > 0 && direction !== "left") direction = "right";
         else if(diffX < 0 && direction !== "right") direction = "left";
     }
-    // Vertical Swipe
+
+// Vertical Swipe
     else{
         if(diffY > 0 && direction !== "up") direction = "down";
         else if(diffY < 0 && direction !== "down") direction = "up";
     }
-
+    
     touchStartX = 0;
     touchStartY = 0;
 });
