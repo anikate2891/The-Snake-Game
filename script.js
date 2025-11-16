@@ -136,3 +136,38 @@ addEventListener("keydown", function(dets){
     else if(dets.key == "ArrowDown") direction = "down"
     else if(dets.key == "ArrowLeft") direction = "left"
 });
+
+
+/* --------------- TOUCH CONTROLS FOR MOBILE (SNAKE GAME) ---------------*/
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener("touchstart", function(e){
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+});
+
+document.addEventListener("touchmove", function(e){
+    if(!touchStartX || !touchStartY) return;
+
+    let touchEndX = e.touches[0].clientX;
+    let touchEndY = e.touches[0].clientY;
+
+    let diffX = touchEndX - touchStartX;
+    let diffY = touchEndY - touchStartY;
+
+    // Horizontal Swipe
+    if(Math.abs(diffX) > Math.abs(diffY)){
+        if(diffX > 0 && direction !== "left") direction = "right";
+        else if(diffX < 0 && direction !== "right") direction = "left";
+    }
+    // Vertical Swipe
+    else{
+        if(diffY > 0 && direction !== "up") direction = "down";
+        else if(diffY < 0 && direction !== "down") direction = "up";
+    }
+
+    touchStartX = 0;
+    touchStartY = 0;
+});
